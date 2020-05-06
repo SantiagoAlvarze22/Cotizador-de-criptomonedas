@@ -27,6 +27,7 @@ const Formulario = () => {
     //State del listado de criptomonedas
 
     const [listacriptomonedas, setListacriptomonedas] = useState([]);
+    const [error, setError] = useState(false)
 
     const MONEDAS = [
         { codigo: 'USD', nombre: 'Dolar de Estados Unidos' },
@@ -57,8 +58,27 @@ const Formulario = () => {
         consultarAPI()
     }, [])
 
+    //Cuando el usuario hace submit
+    const contizarMoneda = e => {
+        e.preventDefault()
+
+        //validar si ambos campos estan llenos 
+
+        if (moneda === '' || criptoMoneda === '') {
+            setError(true)
+            return;
+        }
+
+        //pASAR DATOS AL COMPONENTE PRINCIPAL
+        setError(false)
+
+    }
+
     return (
-        <form>
+        <form
+            onSubmit={contizarMoneda}
+        >
+            {error ? 'Hay un error' : null}
             <SelectMoneda />
 
             <SelectCripto />
