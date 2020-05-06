@@ -20,11 +20,19 @@ const Boton = styled.input`
     }
 `;
 
-const Fromulario = () => {
+const Formulario = () => {
+
+    const MONEDAS = [
+        { codigo: 'USD', nombre: 'Dolar de Estados Unidos' },
+        { codigo: 'MXN', nombre: 'Peso Mexicano' },
+        { codigo: 'EUR', nombre: 'Euro' },
+        { codigo: 'GBP', nombre: 'Libra Esterlina' },
+        { codigo: 'COP', nombre: 'Peso Colombiano' },
+    ]
 
     //Utiliza useMoneda
 
-    const [moneda, SelectMoneda, setState] = useMoneda();
+    const [moneda, SelectMoneda] = useMoneda('Elige tu moneda', '', MONEDAS);
 
     return (
         <form>
@@ -37,4 +45,4 @@ const Fromulario = () => {
     );
 }
 
-export default Fromulario;
+export default Formulario;
